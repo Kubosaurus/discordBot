@@ -1,8 +1,9 @@
 var Discord = require('discord.io');
+var auth = require('auth.json');
 
 var bot = new Discord.Client({
 	autorun: true,
-	token: "MzUyMjkxMjkwNTg0NTgwMDk2.DIfX8w.1Im9wkKFpUc6xkSV4MHDULX3R4A"
+	token: auth.token
 });
 
 bot.on('ready', function(event) {
