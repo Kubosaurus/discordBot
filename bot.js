@@ -1,5 +1,5 @@
 var Discord = require('discord.io');
-var auth = require('auth.json');
+var auth = require('./auth.json');
 
 var bot = new Discord.Client({
 	autorun: true,
