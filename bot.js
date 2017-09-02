@@ -11,33 +11,20 @@ bot.on('ready', function(event) {
 });
 
 bot.on('message', function(user, userID, channelID, message, event){
-	if (message === "Hello, HOOMAN" ||
-		message === "hello, HOOMAN" ||
-		message === "Hello, Hooman" ||
-		message === "hello, Hooman" ||
-		message === "Hello, hooman" ||
-		message === "hello, hooman" ||
-		message === "Hello HOOMAN" ||
-		message === "hello HOOMAN" ||
-		message === "Hello Hooman" ||
-		message === "hello Hooman" ||
-		message === "Hello hooman" ||
-		message === "hello hooman" ||
-		message === "HELLO, HOOMAN" ||
-		message === "HELLO HOOMAN"
-		){
-		bot.sendMessage ({
-			to: channelID,
-			message: "Hullo, " + user + "! :)"
-		});
-	}
-});
-
-bot.on('message', function(user, userID, channelID, message, event){
-	if (message === "@HOOMAN"){
-		bot.sendMessage ({
-			to: channelID,
-			message: "HOOMAN-desu!"
-		});
+	if(message.substring(0,1) == '!'){
+		var args = message.substring(1).split(' ');
+		var check = args[0];
+		if (check === 'Hello' || check === 'hello' || check === 'HELLO' ){
+			bot.sendMessage ({
+				to: channelID,
+				message: "Hello, " + user + "! \:grinning:"
+			});
+		}
+		if (check === 'HOOMAN' || check === 'Hooman' || check === 'hooman'){
+			bot.sendMessage ({
+				to: channelID,
+				message: "HOOMAN-desu!"
+			});
+		}
 	}
 });
