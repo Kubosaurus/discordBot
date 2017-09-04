@@ -8,9 +8,11 @@ const http = require('http'); //node.js http requests
 /*********************************************************
 *********************Global Variables*********************
 **********************************************************/
-var weatherAPI = "http://api.openweathermap.org/data/2.5/weather?q=";
-var weatherUnits = "&units=imperial&appid=";
-var appId = auth.appid;
+var weatherAPI = "http://api.openweathermap.org/data/2.5/weather?q=";	//
+var weatherUnits = "&units=imperial&appid=";							// Open Weather API
+var appId = auth.appid;													//
+
+
 
 
 //create bot using its authentication token
@@ -48,7 +50,6 @@ bot.on('message', function(user, userID, channelID, message, event){
 				city = "corvallis";
 			}
 			var weather = weatherAPI.concat(city, weatherUnits, appId);
-			console.log(typeof(weather));
 			var body = ' ';
 			var req = http.get(weather, function(res){
 				res.on('data', function(chunk) {
@@ -58,10 +59,13 @@ bot.on('message', function(user, userID, channelID, message, event){
 					data = JSON.parse(body);
 					bot.sendMessage({
 						to: channelID,
-						message: "The temperature in " + data.sys.name + " is: " + data.main.temp
+						message: "The temperature in " + data.name + " is: " + data.main.temp
 					});
 				});
 			});
+		}
+		else if (check === 'music' || check === 'Music' || check === 'MUSIC'){
+			
 		}
 	}
 });
