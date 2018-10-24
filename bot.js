@@ -31,21 +31,21 @@ bot.on('ready', function(event) {
 bot.on('message', function(user, userID, channelID, message, event){
 	if(message.substring(0,1) == '!'){				//Will check and respond to messages
 		var args = message.substring(1).split(' '); // starting with an "!"
-		var check = args[0];
-		var city = args[1];
-		if (check === 'Hello' || check === 'hello' || check === 'HELLO' ){
+		var check = args[0].toLowerCase();
+		if (check === 'hello'){
 			bot.sendMessage ({
 				to: channelID,
 				message: "Hello, " + user + "! \:grinning:"
 			});
 		}
-		else if (check === 'HOOMAN' || check === 'Hooman' || check === 'hooman'){
+		else if (check === 'hooman'){
 			bot.sendMessage ({
 				to: channelID,
-				message: "HOOMAN-desu!"
+				message: "I am totally a hooman. With hooman skin just like the other hoomans!"
 			});
 		}
-		else if (check === 'weather' || check === 'Weather' || check === 'WEATHER'){
+		else if (check === 'weather'){
+			var city = args[1].toLowerCase();
 			if(city === undefined){
 				city = "corvallis";
 			}
@@ -64,8 +64,22 @@ bot.on('message', function(user, userID, channelID, message, event){
 				});
 			});
 		}
-		else if (check === 'music' || check === 'Music' || check === 'MUSIC'){
+		else if (check === 'play'){
+			var song = args[1];
+		}
+
+		else if (check === 'pause'){
 			
 		}
+		else if (check === 'add'){
+			var song = args[1];
+		}
+		else if (check === 'skip'){
+
+		}
+		else if (check === 'queue'){
+			
+		}
+
 	}
 });
